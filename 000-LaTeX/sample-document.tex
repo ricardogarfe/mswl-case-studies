@@ -1,31 +1,129 @@
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
-%Gummi|063|=)
-\title{\textbf{Welcome to Gummi 0.6.4}}
-\author{Alexander van der Mey\\
-		Wei-Ning Huang\\
-		Dion Timmermann}
+
+\title{\textbf{\TeX{} \& \LaTeX{}}}
+\author{Ricardo Garc\'ia Fern\'andez}
 \date{}
 \begin{document}
 
 \maketitle
 
-\section{Before you start}
+\section{Introducci\'on}
 
-You are now using Gummi 0.6.4. Many new exciting features have been added to the 0.6 series. The document editor is now a tabbed instance, allowing multiple documents to be worked on simultaneously. Using the new projects menu, you can group files together for easy access. 
+\LaTeX{} es un lenguaje de marcado y formato para generar textos, es decir un compositor de textos que a partir de unas reglas de marcado establecidas nos facilida la generaci\'on de contenido de una manera est\'andar y exportable a todo tipo de formato visualizable independientemente del visor que utilice el  \emph{usuario final} del documento.
 
-Support for two high-level {\LaTeX} building systems, \emph{rubber}\footnote{https://launchpad.net/rubber/} \& \emph{latexmk}\footnote{http://www.phys.psu.edu/{\textasciitilde}collins/software/latexmk-jcc/} has been added to this release as well. Your preferred typesetter can be configured through the Compilation tab in the Preferences menu. Typesetters that are not installed on your system will not be selectable. 
+\section{\TeX{}}
 
-Added for your viewing convenience is a continuous preview mode for the PDF. This mode is enabled by default, but can also be disabled through the \emph{(View $\rightarrow$ Page layout in preview)} menu. Complementary to this feature is SyncTeX inte	gration, which allows you to synchronize the position in your editor with the PDF preview. 
+Es un \emph{lenguaje de marcado y formato} para generar textos.
 
-\section{Feedback}
-We hope you will enjoy using this release as much as we enjoyed creating it. If you have comments, suggestions or wish to report an issue you are experiencing - contact us at: \emph{http://gummi.midnightcoding.org}.
+\subsection{Descripci\'on}
 
-\section{One more thing}
-If you are wondering where your old default text is; it has been stored as a template. The template menu can be used to access and restore it. 
+Definici\'on de las reglas para la visualizaci\'on, es decir la composici\'on de una p\'agina.
 
-\section{más y más}
-bla, bla, bla...
+Como m\'axima responde a un formato de texto para la generaci\'on de libros que es la finalidad inicial con la que \emph{Donald Knuth}\footnote{http://es.wikipedia.org/wiki/Donald\_Knuth/} inici\'o el proyecto para estadarizar el proceso en 1978.
+
+Est\'a desarrollado a partir de un lenguaje \emph{literario} llamado \emph{Web}\footnote{http://en.wikipedia.org/wiki/WEB}.
+
+\subsection{Licencias}
+
+\TeX{} no es una herramienta de c\'odigo abierto totalmente como viene definido ya que es \emph{libre}.
+
+Se puede afirmar que es \b{OSI compliant}, no permisivo, no copyleft.
+
+Si se crea un software derivado no puede llamarse \TeX{} ni nada que lleve a la confusi\'on con \'este y ha de cumplor las Reglas de Test llamadas \b{TRIP}\footnote{ftp://tug.ctan.org/pub/tex-archive/systems/knuth/dist/tex/trip.tex} y \b{TRAP}.
+
+\section{\LaTeX{}}
+
+El nombre de \LaTeX{} viene del Griego: \b{Tejné}: \emph{skill, art, technique} y fon\'eticamente se pronuncia la \b{X} como \b{Ji}.
+
+Es un Sistema de composici\'on de textos y como mayor propiedad cabría destacar que el \emph{output} es id\'entico en todos los sistemas, es decir el documento resultante.
+
+\subsection{Propiedades}
+
+Aqu\'i podemos ver una lista de propiedades que aporta \LaTeX{} a la generaci\'on de textos:
+
+\begin{itemize}
+	\item Evita el \b{Kerning}.
+	\begin{itemize}
+		\item Justificaci\'on del texto mediante espacios entre caracteres.
+	\end{itemize}
+	\item \b{Versalita}, May\'uscula del tamaño de una min\'uscula.
+	\begin{itemize}
+		\item Respeta el tamaño y crea un nuevo caracter para las versalitas 'e--\textsc{e}'.
+	\end{itemize}
+	\item \b{Ligaturas}, ahorro de caracteres (fi) unidos para generar un tipo en vez de dos.
+	\begin{itemize}
+		\item Respeta las ligaturas \emph{frecuentes}` para tipograf\'ias antiguas.
+	\end{itemize}
+\end{itemize}
+
+Estos casos son espec\'ificos en el desarrollo de un documento orientado a la escritura de un libro, debido a este tipo de cualidades se llama a Donal Knuth el nuevo Gutenberg, el inventor de la imprenta moderna.
+
+\subsection{Problemas}
+
+Como no, no hay nada perfecto y se enumeran los problemas que m\'as dolores de cabeza aportan al escritor de \LaTeX{}
+\begin{itemize}
+	\item No \textsc{wysiwyg} (what you see is what you get).
+	\item Gran curva de aprendizaje.
+	\item \emph{Posicionamiento Absoluto}: saltarse las reglas b\'asicas para formato de textos.
+	\item Debe de \emph{compilarse}.
+\end{itemize}
+
+En esta lista de problemas en mi opini\'on como desarrollador puede que vea que la gran curva de aprendizaje y la falta de \textsc{wysiwyg} pueden invitarnos a un comienzo tedioso del desarrollo de documentos con \LaTeX{} pero escribo esto a trav\'es de un editor Gummi\footnote{http://dev.midnightcoding.org/projects/gummi} que me muestra al instante el resultado que voy a obtener del documento \b{compilado} por lo que el \'ultimo punto puede ser despreciable a la vez que el primero.
+
+Respecto que la curva de aprendizaje sea elevada es cierto pero mientras escribo estas l\'ineas accedo a un wiki online que hace las funciones de 'API' al que accedo cuando tengo una duda de como representar lo que estoy escribiendo por lo que al final me quedar\'e con los automatismos y buscar\'e informaci\'on cuando tenga alg\'un problema.
+
+Al fin y al cabo es como aprender un nuevo lenguaje de programaci\'on hay que seguir los principios b\'asicos despu\'es de haber conseguido una base para poder 'empezar de cero'.
+
+Por lo que el \emph{Posicionamiento Absoluto} puede que si sea un problema pero claro dentro del contexto correspondiente ya que para m\'i sinceramente es una especia de inc\'ognita.
+
+\section{Editores \LaTeX{}}
+
+Una ayuda que siempre viene bien a la hora de empezar con una nueva herramienta, en este caso para la composición de textos, sería un editor visual.
+Buscando información sobre proyectos asociados a LaTeX he encontrado \b{Gummi}, un editor visual que facilita la visualización inmediate del documento:
+
+\begin{itemize}
+	\item http://dev.midnightcoding.org/projects/gummi/wiki/Downloads
+\end{itemize}
+
+Est\'a disponible para distintos sistemas operativos y la \'ultima versión data del 22 de Junio del 2012. 
+
+Es bastante \'util para aquellos que empezamos a \emph{escribir} en \LaTeX{} y cuenta con una ayuda online en la página del proyecto:
+
+\begin{itemize}
+	\item http://dev.midnightcoding.org/projects/gummi/wiki/UserGuide
+\end{itemize}
+
+Tambi\'rn existe un editor para Eclipse\footnote{http://texlipse.sourceforge.net/} pero personalmente no me gusta sobrecargar el IDE con plugins \emph{extras} ya que el prop\'osito es acabar utilizando un editor 'plano' y ligero.
+
+\section{Correctores ortogr\'aficos}
+
+Es algo que creo bastante importante en este tipo de herramientas y algo que echo en falta aunque se entiende que no exista incluido dentro de los paquetes \emph{b\'asicos} de \LaTeX{}.
+
+Me he decido por Aspell ya que la informaci\'on es para un corrector de ficheros de texto en Linux.
+
+Instalaci\'on mediante apt: 
+\begin{itemize}
+	\item sudo apt-get install aspell-es
+\end{itemize}
+Comprobaci\'on ortogr\'afica del fichero seleccionado:
+\begin{itemize}
+	\item aspell –master=spanish  check fichero.tex
+\end{itemize}
+
+Mediante sencillos comandos se va actualizando el documento con los posibles errores ortogr\'aficos que se hayan podido comenter.
+
+\section{Referencias}
+
+CervanTeX: http://www.cerventex.es
+WikiBooks: http://es.wikibooks.org/wiki/Manual\_de\_LaTeX/Escribiendo\_texto
+Tex-tipografia: http://www.tex-tipografia.com 
+Correctores:
+
+\begin{itemize}
+	\item Aspell: http://alexandrev.wordpress.com/2009/11/15/corrector-ortografico-en-latex/
+	\item Kile: http://aldarias.blogspot.com.es/2010/05/latex-kile-corrector-ortografico.html
+\end{itemize}
 
 \end{document}

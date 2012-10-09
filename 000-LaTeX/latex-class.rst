@@ -42,8 +42,7 @@ LaTeX
 Tejné: skill, art, technique
 Fonética X: Ji
 
-Sistema de composición de textos.
-El output es idéntico en todos los sistemas.
+Sistema de composición de textos.El output es idéntico en todos los sistemas.
 
 Propiedades
 ------------
@@ -89,7 +88,7 @@ Referencias
 ============
 
 CervanTeX: http://www.cerventex.es
-http://en.wikibook...
-http://www.tex-tipografia.com
+WikiBooks: http://es.wikibooks.org/wiki/Manual_de_LaTeX/Escribiendo_texto
+Tex-tipografia: http://www.tex-tipografia.com 
 
 
