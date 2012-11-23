@@ -1,0 +1,79 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\title{\textbf{Hypervisors}}
+\author{Ricardo Garc\'ia Fern\'andez}
+\date{}
+\begin{document}
+
+\maketitle
+
+\section{Introducci\'on}
+
+Hyprevisor es un software que reparte recursos entre las máquinas virtuales.
+
+Existen dos tipos, \textbf{Type-1} y \textbf{Type-2} que veremos a continuación.
+
+\section{Type-1}
+
+Type-1 - corre en el mismo hardware de inicio, es decir está incluido.
+
+Cuando la aplicación hace una llamada al sistema, el hypervisor la captura para el tratamiento y decide que sistema operativo ha de efectuar la llamada al sistema y de esta manera devuelve el resultado al mismo hypervisor.
+
+Guest app - Guest OS - Type-1 - Processor.
+
+\section{Type-2}
+
+Type-2 - aplicación para crear máquinas virtuales dentro del sistema operativo.
+
+El ejemplo práctico es la instalación de un VirtualBox. Por lo que:
+
+    Guest app - Guest OS - Type-2 - Host OS - Processor.
+
+Un capa añadida para la gestión de las llamadas al sistema por lo que el modelo parece tener más carga que el modelo Type-1.
+
+\section{Hypervisor products}
+
+\begin{itemize}
+    \item Xen: GPLv2.
+    \item KVM: GPLv2, LGPLv2, LGPL, GPL.
+    \item VirtualBox: GPLv2. 
+\end{itemize}
+
+\subsection{Xen - Citrix}
+
+Comenzó en una universidad (Buscar información), hypervisor Type-1:
+
+\begin{itemize}
+    \item Type-1.
+    \item Domo0, control, domain. (VM) de control de los nodos de las máquinas a gestionar.
+    \item Domo1, unpriviled, domain. (guests)
+    \item Hypervisor
+    \item Hardware
+\end{itemize}
+
+Requiere que el kernel de la máquina comprenda que tiene un hypervisor instalado.
+
+No es necesario emular hardware por lo que se puede sacar partido a un pc antiguo.
+
+\subsection{KVM - RedHat}
+
+Virtualización completa Type-1. A diferencia de Xen, funciona como módulo del kernel por lo que facilita la integración y no ha de entorpecer el desarrollo del sistema operativo para sacar una nueva versión.
+
+\subsection{Qemu}
+
+Aceleración de la emulación de hardware pero no optimiza las instrucciones del kernel.
+
+\subsection{VirtualBox}
+
+Type-2 hypervisor. En tiempo de ejecución se puede recompilar código mediante Qemu para el arranque del sistema (investigar y saber que es esto).
+
+\section{Herramintas de gestión}
+
+\begin{itemize}
+    \item Libvirt; redes virtuales, máquinas virtuales, almacenamiento, dispositivos a través de la consola de administración \textbf{Virsh}.
+    \item OpenStack; Nova (computo), Swift (almacenamiento, la propia máquina virtual en si isos), Glance (VM repository), Horizon como interfaz de Openstack.. Progrmado en Python. Insfraestructura como servicio.
+\end{itemize}
+
+\end{document}
