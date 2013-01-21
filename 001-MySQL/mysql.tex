@@ -14,24 +14,24 @@
 
 \section{Introducci\'on}
 
-\emph{MySQL}: Es un sistema de bases de datos relacionadas, que se distingue por:
+\emph{MySQL}: Es un sistema de bases de datos relacional, que se distingue por:
 
 \begin{itemize}
-	\item Base de datos relación.
+	\item Base de datos relacional.
 	\item Multiplataforma.
-	\item Software libre desde el 2000 con doble licenciamiento. GPL y otras licencias comerciales.
-	\item SQL Compatible
+	\item Software libre desde el año 2000 con doble licenciamiento, con licencia GPL y otras licencias comerciales.
+	\item Compatibilidad SQL
 	\item Triggers, functions, stored procedures, GIS, replication, clustering, \ldots
     \item Soporta varios motores de almacenamiento (MyISAM, InnoDB, MERGE, MEMORY ...)
 \end{itemize}
 
 \section{MySQL}\label{sec:mysql}
 
-\par Para ponernos en contexto a trav\'es de un poco de historia alrededor de MySQL.
+\par Para ponernos en contexto, se va a presentar un poco de historia alrededor de MySQL.
 
-\par Fue desarrollado por Michael Widenius y David Axmark y en 1995 fundaron la compa\~n\'ia \emph{MySQL AB}. Desde 1995 fue creciendo a partir de su primera vesi\'on hasta que en el a\~no 2000 se public\'o con licencia GPL.
+\par Fue desarrollado por Michael Widenius y David Axmark, quienes en 1995 fundaron la compa\~n\'ia \emph{MySQL AB}. A partir de 1995 la compañ\'ia fue creciendo desde su primera vesi\'on hasta que en el a\~no 2000 se public\'o con licencia GPL.
 
-\par En el a\~no 2005 se publica MySQL 5.0. A partir de esta fecha empiezan los verdaderos cambios desde fuera de MySQL.
+\par En el a\~no 2005 se publica MySQL 5.0. A partir de esta fecha empiezan los verdaderos cambios desde fuera de MySQL:
 
 \begin{itemize}
 	\item En 2008 Sun compr\'o MySQL.
@@ -43,14 +43,14 @@
 
 \section{Instalaci\'on}
 
-\par Se puede instalar facilmente desde el mismo gestor de packetes en una distribuci\'on basada en Debian, como es el caso de Ubuntu:
+\par Se puede instalar f\'acilmente desde el mismo gestor de paquetes en una distribuci\'on basada en Debian, como es el caso de Ubuntu:
 
 \begin{lstlisting}[style=Shell]
 ricardo@ricardo-ubuntu:~$ sudo apt-get install mysql-client
 ricardo@ricardo-ubuntu:~$ sudo apt-get install mysql-server
 \end{lstlisting}
 
-Se han de segir paso a paso las instrucciones a la hora de configurar MySQL.
+Se han de seguir paso a paso las instrucciones a la hora de configurar MySQL.
 
 \begin{itemize}
 	\item Contrase\~na del usuario root.
@@ -73,7 +73,7 @@ mysql [<options>] database
 --host, -h: connect to the server on the given host
 \end{lstlisting}
 
-\par Entrar en el client de la base de datos:
+\par Entrar en el cliente de la base de datos:
 \begin{lstlisting}[style=Shell]
 ricardo@ricardo-ubuntu:~$ mysql -u root -padmin
 Welcome to the MySQL monitor.  Commands end with ; or \g.
@@ -125,7 +125,7 @@ mysql> desc [nombre\_de\_tabla];
 \section{Backups}
 \label{sec:backups}
 
-\par Se pueden hacer cualquier tipo de filtro a para crear un backup:
+\par Se pueden aplicar diferentes tipo de filtros a la hora de crear un backup de la base de datos:
 
 \begin{itemize}
 	\item BBDD completa.
@@ -143,7 +143,7 @@ Tambi\'en podemos optar por la elecci\'on de \emph{PhpMyAdmin}\footnote{http://w
 \section{Peculiaridades}
 \label{sec:peculiaridades}
 
-\par En MySQL, los tipos de Datos Gis\footnote{http://dev.mysql.com/doc/refman/5.0/es/spatial-extensions.html} no estaban soportados antes. Este tipo de datos ofrece valores que representan a un elemento geogr\'afico, donde por elemento geogr\'afico entendemos; \emph{cualquier cosa en el mundo que tenga una ubicaci\'on}.
+\par En MySQL, los tipos de Datos Gis\footnote{http://dev.mysql.com/doc/refman/5.0/es/spatial-extensions.html} no estaban soportados con anterioridad. Este tipo de datos ofrece valores que representan a un elemento geogr\'afico, donde por elemento geogr\'afico entendemos; \emph{cualquier cosa en el mundo que tenga una ubicaci\'on}.
 
 \begin{thebibliography}{9}
 
