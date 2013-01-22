@@ -1,54 +1,88 @@
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
-\usepackage[spanish]{babel}
+\usepackage[parfill]{parskip}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{fancyvrb}
+\usepackage{listings}
 
 \title{\textbf{Translations in Libre Software}}
 \author{Ricardo Garc\'ia Fern\'andez}
-\date{}
+\date{\today}
 \begin{document}
 
 \maketitle
 
 \section{Introducci\'on}
 
-Proceso de traducción de un proyecto de software paso a paso:
+\par Aqu\'i tenemos definido el proceso de traducci\'on de un proyecto de software libre paso a paso:
 \begin{itemize}
     \item Objetos a internacionalizar.
-    \item Internacionalización.
-    \item Localización.
-    \item Revisión, Mantenimiento y Quality Assurance.
+    \item Internacionalizaci\'on.
+    \item Localizaci\'on.
+    \item Revisi\'on, Mantenimiento y Quality Assurance.
 \end{itemize}
 
 \section{Objetos a internacionalizar}
 
-Saber que es lo que hay que internacionalizar y como.
+Saber \emph{que es} lo que hay que internacionalizar y \emph{como}.
 
-\section{Internacionalización}
+\section{Internacionalizaci\'on}
 
+\par Mediante la definici\'on que nos ofrece la wikipedia con respecto a internacionalizaci\'on:
 
+\emph{La internacionalizaci\'on es el proceso de dise\~nar software de manera tal que pueda adaptarse a diferentes idiomas y regiones sin la necesidad de realizar cambios de ingenier\'ia ni en el c\'odigo}\footnote{http://es.wikipedia.org/wiki/Internacionalizaci\%C3\%B3n\_y\_localizaci\%C3\%B3n}.
 
-\section{Localización}
+\par Por lo que extaemos que la internacionalizaci\'on de un software es un m\'odulo a parte que ha de poder abstraerse del desarollo del proyecto. No ha de seguir las mismas v\'as, han de coexistir sabiendo de su mutua existencia ayud\'andose en la medida de lo posible.
 
-Herramientas de localización.
+\section{Localizaci\'on}
+
+\par Y por parte de Localizaci\'on, encontramos la siguiente definici\'on:
+
+\emph{La localizaci\'on es el proceso de adaptar el software para una regi\'on espec\'ifica mediante la adici\'on de componentes espec\'ificos de un locale y la traducci\'on de los textos, por lo que tambi\'en se le puede denominar regionalizaci\'on}\footnote{http://es.wikipedia.org/wiki/Internacionalizaci\%C3\%B3n\_y\_localizaci\%C3\%B3n}.
+
+\par En este apartado definido como \emph{localizaci\'on}, se enmarca en el desarrollo de una soluci\'on con adaptada a la cultura de una zona espec\'ifica. No s\'olo el idioma sino la forma de uso del mismo dentro del contexto en el que se presenta.
+
+\par Herramientas de localizaci\'on.
 
 \begin{itemize}
-    \item Investigar \emph{GNU Gettext}, existente desde los años 80.
-    \item ¿ Android ? Spring... etc, etc, etc...
+    \item Investigar \emph{GNU Gettext}, existente desde los a\~nos 80.
+    \item Android, Spring, etc\ldots
     \item Gnome.
 \end{itemize}
 
-\emph{Standalone translation tools}; Poedit, Gtranslator, Lokalize, Virtaal.
-    Estas herramientas proporcionan unos test de calidad para las traducciones hechas por el usuario por lo que comprueba que la traducción corresponde (como) a la realidad. \textbf{¿Autocorrección de palabras?}
+\subsection{Standalone translation tools}
 
-\emph{Translation Web platforms}; Pootle, Launchpad, Transifex, Weblate.
-Se coordinan con el repositorio de código online para gestionar los ficheros.
+\begin{itemize}
+	\item Poedit
+	\item Gtranslator
+	\item Lokalize
+	\item Virtaal
+\end{itemize}
 
-\emph{Módulos}; Wordpress, Drupal, ¿Blogger?
+\par Estas herramientas proporcionan unos test de calidad para las traducciones hechas por el usuario por lo que comprueba que la traducci\'on corresponde (como) a la realidad. \textbf{¿Autocorrecci\'on de palabras?}
 
-\section{Revisión, mantenimiento y QA}
+\subsection{Translation Web platforms}
 
-Coordinación entre los traductores y los desarrolladores para obtener un resultado completo a la hora de lanzar el producto.
-Establecer las guías básicas para la traducción, glosarios, TM.
-Definir los roles.
+\begin{itemize}
+	\item Pootle
+	\item Launchpad
+	\item Transifex
+	\item Weblate
+\end{itemize}
+
+\par Se coordinan con el repositorio de c\'odigo online para gestionar los ficheros.
+
+\emph{M\'odulos}; Wordpress, Drupal.
+
+\section{Revisi\'on, mantenimiento y QA}
+
+\par Siempre se ha deter un orden a la hora de gestionar un proyecto, este caso no es ninguna excepci\'on. Se ha resumido en estos tres grandes grupos para la gesti\'on de las revisiones, el mantenimiento y englobando a todo, la calidad del trabajo.
+
+\begin{itemize}
+	\item Coordinaci\'on entre los traductores y los desarrolladores para obtener un resultado completo a la hora de lanzar el producto.
+	\item Establecer las gu\'ias b\'asicas para la traducci\'on, glosarios, TM.
+	\item Definir los roles.
+\end{itemize}
 
 \end{document}
