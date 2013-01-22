@@ -1,7 +1,14 @@
 \documentclass{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[parfill]{parskip}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{fancyvrb}
+\usepackage{listings}
+
+\lstdefinestyle{Shell}{delim=[il][\bfseries]{BB}}
 
 \title{\textbf{Intro to Shells}}
-\subtitle{}
 \author{Ricardo Garc\'ia Fern\'andez}
 \date{\today}
 
@@ -13,92 +20,126 @@
 
 El inicio de las shells, el arranque del PC.
 
+\begin{enumerate}
+	\item Arrancamos el PC
+	\item La BIOS toma el control: comprueba dispositivos y busca instrucciones en el MBR
+	\item El MBR apunta al cargador de arranque (GRUB o LILO)
+	\item El cargador de arranque inicia el kernel
+	\item Lo primero que hace el kernel es ejecutar el proceso init
+	\item En funci\'on del nivel de ejecuci\'on, se van lanzando m\'as scripts y servicios
+	\item Por ultimo, aparece la pantalla de login
+\end{enumerate}
+
+Aqu\'i empieza nuestro primer contacto con una shell que en castellano significa \emph{caparaz\'on}.
+
 \section{Que es una shell}
 
-Una \textbf{shell} es una aplicaci\'on m\'as que se ejecuta cuando un usuario inicia una sesi\'on.
+Una \textbf{shell} es una aplicaci\'on m\'as que se ejecuta cuando un usuario inicia una sesi\'on que permite la interacci\'on entre el usuario y el sistema operativo.
 
-\subsection{Hist\'orico de Shells}
+Una peque\~na shell de ejemplo implementada con python:
 
-Una peque\~na historia a trav\'es de la evoluci\'on de las shells.
+\begin{lstlisting}[style=Shell]
+python pyshell.py
+#!/usr/bin/env python
+import os
+prompt = "$ "
+while True:
+line = raw input(prompt)
+os.system(line)
+\end{lstlisting}
 
-\subsubsection{Thompson Shell}
+\section{Hist\'orico de Shells}
+
+Una peque\~na historia a trav\'es de la evoluci\'on de las shells a trav\'es del tiempo.
+
+\subsection{Thompson Shell}
 
 No variables, scripting, autocompletado pero es \emph{la precursora} las futuras shells de linux.
 Escrita por Kent Thompson creador de Unix mediante el lenguage \textbf{C}\footnote{http://v6shell.org/}.
 
 Licencia BSD.
 
-\subsubsection{Bourne Shell}
+\subsection{Bourne Shell}
 
 Desarrollada por Stephen Bourne en 1977 en AT\&T programada en \textbf{C}.
 Fue criticada a pesar de que se convirti\'o en la estandar para los sistemas Linux.
 
 Licencia BSD.
 
-\subsubsection{C shell}
+\subsection{C shell}
 
 Bill Joy, tambi\'en desarrollada en \textbf{C}.
 
-historial
-completado ficheros
-aliases
-La sitanxis era muyparecida a C y en este aspecto 
+A\~nade como mejoras:
+\begin{itemize}
+	\item historial
+	\item completado ficheros
+    \item aliases
+\end{itemize}
 
-Pero no se pod\'ian utilizar funciones.
+\par La sitanxis es muy parecida a C y en este aspecto, ayud\'o a su f\'acil adopci\'on. 
 
-Licencia BSD.
+\par No se pod\'ian utilizar funciones, este era su punto negativo.
 
-\subsubsection{Tenex C shell: tcsh}
+\par Licencia BSD.
 
-TENEX fue un sistema operativo para las computadoras PDP-10(referencia).
+\subsection{Tenex C shell: tcsh}
 
-Autocompletado de comandos.
-Uso avanzado del historial.
+\emph{TENEX} fue un sistema operativo para las computadoras PDP-10\footnote{http://dl.acm.org/citation.cfm?id=361271}.
 
-Licencia BSD.
+\par Las funcionalidades a destacar por encima de las dem\'as:
+\begin{itemize}
+	\item Autocompletado de comandos.
+	\item Uso avanzado del historial.
+\end{itemize}
 
-\subsubsection{Korn shell}
+\par Licencia BSD.
 
-Posix 1003.2 (referencia).
-Compatibilida con Bourne Shell.
-Software propietario hasta el a\~no 2000.
+\subsection{Korn shell}
 
-Alternativas libres:
+\par Posix 1003.2\footnote{http://docstore.mik.ua/orelly/unix3/korn/appa\_01.htm}.
 
-pdksh: shell por defecto de OpenBSD.
-mksh: shell por defecto de Android.
+\par Esta shell destaca por la compatibilidad con Bourne Shell. Fue software propietario hasta el a\~no 2000 en donde se public\'o bajo la licencia BSD.
 
-Licencia BSD.
+\par Alternativas libres:
+\begin{itemize}
+	\item pdksh: shell por defecto de OpenBSD.
+    \item mksh: shell por defecto de Android.
+\end{itemize}
 
 \subsubsection{Bourn-again sehll}
 
-Bash: actualmente la shell principal de los sistemas Linux.
+\par Bash: actualmente la shell principal de los sistemas Linux, por lo tanto m\'as conocida por los usuarios.
 
-Incluye ideas de sh, ksh, csk.
-Programar funciones.
-Argunmentos por defecto.
-Scripts de inicio.
+\par Est\'a compuesta por ideas de sh, ksh, csk.
 
-Licencia GPLv3.
+\par Destaca por la facilidad para programar funciones. Se pueden definir argumentos por defecto y a\~nadir Scripts de inicio.
+
+\par Est\'a publicada bajo la licencia GPLv3.
 
 \subsubsection{Z shell: zsh}
 
-Paul Flastad en la Universidad de Princeton en 1990.\\
-El nombre procede de Zhong Shao (zsh) el tutor de su tesis.\\
-Es una shell 'cool'.\\
-Licencia MIT.
+\par Creada por Paul Flastad\footnote{http://www.falstad.com/} en la Universidad de Princeton en 1990. El nombre \emph{zsh} procede de Zhong Shao\footnote{http://cs-www.cs.yale.edu/homes/shao-zhong/}, el tutor de su tesis.
+
+\par Es una shell 'cool' bajo la licencia MIT.
 
 \section{Instalaci\'on de shells}
 
 \begin{itemize}
     \item csh
     \item tcsh
-    \item zsh - probar.
+    \item zsh
     \item pdsh
 \end{itemize}
 
 \section{Scripting}
 
-Las shells son diferentes, es decir la sintaxis puede variar por lo que hay que pensar en desarrollar para m\'ultiples plataformas.
+\par Las shells son diferentes, es decir, la sintaxis puede variar por lo que hay que pensar en desarrollar para m\'ultiples plataformas.
+
+\section{Multi shell}
+
+\par Como hemos podido observar, existen distintos tipos de Shell. Por lo que se puede dedicar un trabajo espec\'ifico a cada una de ellas. Trabajando entre las mismas intercambiando informaci\'on y as\'i, obteniendo un mayor rendimiento para cada objetivo.
+
+\par Aunque con un poco m\'as de conocimiento, la interoperabilidad en las Shells, no tiende a extenderse. La gente utiliza la que m\'as se adecua a su trabajo y var\'ia en funci\'on de las necesidades.
 
 \end{document}
