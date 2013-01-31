@@ -1,6 +1,10 @@
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
-\usepackage[spanish]{babel}
+\usepackage[parfill]{parskip}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{fancyvrb}
+\usepackage{listings}
 
 \title{\textbf{Hypervisors}}
 \author{Ricardo Garc\'ia Fern\'andez}
@@ -11,30 +15,31 @@
 
 \section{Introducci\'on}
 
-Hyprevisor es un software que reparte recursos entre las máquinas virtuales.
+\emph{Hyprevisor} es un software que reparte recursos entre las m\'aquinas virtuales.
 
-Existen dos tipos, \textbf{Type-1} y \textbf{Type-2} que veremos a continuación.
+\par Existen dos tipos, \textbf{Type-1} y \textbf{Type-2} que veremos a continuaci\'on.
 
 \section{Type-1}
 
-Type-1 - corre en el mismo hardware de inicio, es decir está incluido.
+Type-1 - corre en el mismo hardware de inicio, es decir est\'a incluido.
 
-Cuando la aplicación hace una llamada al sistema, el hypervisor la captura para el tratamiento y decide que sistema operativo ha de efectuar la llamada al sistema y de esta manera devuelve el resultado al mismo hypervisor.
+Cuando la aplicaci\'on hace una llamada al sistema, el hypervisor la captura para el tratamiento y decide que sistema operativo ha de efectuar la llamada al sistema y de esta manera devuelve el resultado al mismo hypervisor.
 
 Guest app - Guest OS - Type-1 - Processor.
 
 \section{Type-2}
 
-Type-2 - aplicación para crear máquinas virtuales dentro del sistema operativo.
+\par Type-2 - aplicaci\'on para crear m\'aquinas virtuales dentro del sistema operativo.
 
-El ejemplo práctico es la instalación de un VirtualBox. Por lo que:
+\par El ejemplo pr\'actico es la instalaci\'on de un VirtualBox\footnote{https://www.virtualbox.org/}. Por lo que:
 
-    Guest app - Guest OS - Type-2 - Host OS - Processor.
+    \emph{Guest app - Guest OS - Type-2 - Host OS - Processor}
 
-Un capa añadida para la gestión de las llamadas al sistema por lo que el modelo parece tener más carga que el modelo Type-1.
+\par Un capa a\~nadida para la gesti\'on de las llamadas al sistema por lo que el modelo parece tener m\'as carga que el modelo Type-1.
 
 \section{Hypervisor products}
 
+Una lista detallada de los tipos de \emph{Hypervisor} m\'as conocidos en el mercado:
 \begin{itemize}
     \item Xen: GPLv2.
     \item KVM: GPLv2, LGPLv2, LGPL, GPL.
@@ -43,37 +48,45 @@ Un capa añadida para la gestión de las llamadas al sistema por lo que el model
 
 \subsection{Xen - Citrix}
 
-Comenzó en una universidad (Buscar información), hypervisor Type-1:
+Comenz\'o en la universidad de Cambridge y se trata de un hypervisor \emph{Type-1}:
 
 \begin{itemize}
     \item Type-1.
-    \item Domo0, control, domain. (VM) de control de los nodos de las máquinas a gestionar.
+    \item Domo0, control, domain. (VM) de control de los nodos de las m\'aquinas a gestionar.
     \item Domo1, unpriviled, domain. (guests)
     \item Hypervisor
     \item Hardware
 \end{itemize}
 
-Requiere que el kernel de la máquina comprenda que tiene un hypervisor instalado.
+\par Requiere que el kernel de la m\'aquina comprenda que tiene un hypervisor instalado.
 
-No es necesario emular hardware por lo que se puede sacar partido a un pc antiguo.
+\par No es necesario emular hardware por lo que se puede sacar partido a un pc antiguo.
 
 \subsection{KVM - RedHat}
 
-Virtualización completa Type-1. A diferencia de Xen, funciona como módulo del kernel por lo que facilita la integración y no ha de entorpecer el desarrollo del sistema operativo para sacar una nueva versión.
+\par Virtualizaci\'on completa Type-1 del n\'ucleo de Linux. A diferencia de Xen, funciona como m\'odulo del kernel por lo que facilita la integraci\'on y no ha de entorpecer el desarrollo del sistema operativo para sacar una nueva versi\'on.
+
+\par Detr\'as de esta herramienta se encuentra RedHat que previamente utilizaba Xen\footnote{http://www.redhat.com/about/news/archive/2012/9/red-hats-kvm-hypervisor-achieves-top-virtualization-performance-results-with-ibm}.
 
 \subsection{Qemu}
 
-Aceleración de la emulación de hardware pero no optimiza las instrucciones del kernel.
+\par \emph{Qemu}\footnote{http://wiki.qemu.org/Main\_Page} nos aporta la aceleraci\'on de la emulaci\'on de hardware pero no optimiza las instrucciones del kernel.
+
+\par Est\'a publicado bajo la licencia GPLv2, aunque tambi\'en aclara que hay m\'odulos que no est\'an licenciado con GPLv2 pero son compatibles\footnote{http://wiki.qemu.org/License}. Est\'a bajo la tutela de Bellard\footnote{http://bellard.org/}
 
 \subsection{VirtualBox}
 
-Type-2 hypervisor. En tiempo de ejecución se puede recompilar código mediante Qemu para el arranque del sistema (investigar y saber que es esto).
+\par \emph{VirtualBox} es un Type-2 hypervisor.
 
-\section{Herramintas de gestión}
+\par Destaca que en tiempo de ejecuci\'on se puede recompilar c\'odigo mediante Qemu para el arranque del sistema.
+
+\section{Herramintas de gesti\'on}
+
+\par Para el uso en un nivel superior de \'estas soluciones, existen unas herramientas de gesti\'on que facilitan la interacci\'on con los hypervisors:
 
 \begin{itemize}
-    \item Libvirt; redes virtuales, máquinas virtuales, almacenamiento, dispositivos a través de la consola de administración \textbf{Virsh}.
-    \item OpenStack; Nova (computo), Swift (almacenamiento, la propia máquina virtual en si isos), Glance (VM repository), Horizon como interfaz de Openstack.. Progrmado en Python. Insfraestructura como servicio.
+    \item \emph{Libvirt}; redes virtuales, m\'aquinas virtuales, almacenamiento, dispositivos a trav\'es de la consola de administraci\'on \textbf{Virsh}.
+    \item \emph{OpenStack}; Nova (computo), Swift (almacenamiento, la propia m\'aquina virtual en si, isos), Glance (VM repository), Horizon como interfaz de Openstack. Ha sido Programado en Python. Infraestructura como servicio - \emph{IaaS}.
 \end{itemize}
 
 \end{document}

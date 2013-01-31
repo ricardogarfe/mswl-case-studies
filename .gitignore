@@ -2,3 +2,8 @@
 *~
 ## LaTeX Gummi files
 *.swp
+*.aux
+*.log
+
+## Pdf files
+*.pdf

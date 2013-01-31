@@ -1,0 +1,162 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[parfill]{parskip}
+\usepackage{listings}
+\lstdefinestyle{Shell}{delim=[il][\bfseries]{BB}}
+
+\title{\textbf{MySQL}}
+\author{Ricardo Garc\'ia Fern\'andez}
+\date{\today}
+\begin{document}
+
+\maketitle
+
+\section{Introducci\'on}
+
+\emph{MySQL}: Es un sistema de bases de datos relacional, que se distingue por:
+
+\begin{itemize}
+	\item Base de datos relacional.
+	\item Multiplataforma.
+	\item Software libre desde el año 2000 con doble licenciamiento, con licencia GPL y otras licencias comerciales.
+	\item Compatibilidad SQL
+	\item Triggers, functions, stored procedures, GIS, replication, clustering, \ldots
+    \item Soporta varios motores de almacenamiento (MyISAM, InnoDB, MERGE, MEMORY ...)
+\end{itemize}
+
+\section{MySQL}\label{sec:mysql}
+
+\par Para ponernos en contexto, se va a presentar un poco de historia alrededor de MySQL.
+
+\par Fue desarrollado por Michael Widenius y David Axmark, quienes en 1995 fundaron la compa\~n\'ia \emph{MySQL AB}. A partir de 1995 la compañ\'ia fue creciendo desde su primera vesi\'on hasta que en el a\~no 2000 se public\'o con licencia GPL.
+
+\par En el a\~no 2005 se publica MySQL 5.0. A partir de esta fecha empiezan los verdaderos cambios desde fuera de MySQL:
+
+\begin{itemize}
+	\item En 2008 Sun compr\'o MySQL.
+	\item En 2008 Oracle compr\'o Sun. Varios t\'ecnicos crearon un ``fork``. MariaDB\footnote{https://mariadb.org/} es uno de los forks m\'as famosos de MySQL.    
+	\item En 2011 Oracle empieza a vender extensiones comerciales de MySQL.
+\end{itemize}
+
+\par Podemos ver que actualmente se encuentra en la versión \textbf{5.5.28}.
+
+\section{Instalaci\'on}
+
+\par Se puede instalar f\'acilmente desde el mismo gestor de paquetes en una distribuci\'on basada en Debian, como es el caso de Ubuntu:
+
+\begin{lstlisting}[style=Shell]
+ricardo@ricardo-ubuntu:~$ sudo apt-get install mysql-client
+ricardo@ricardo-ubuntu:~$ sudo apt-get install mysql-server
+\end{lstlisting}
+
+Se han de seguir paso a paso las instrucciones a la hora de configurar MySQL.
+
+\begin{itemize}
+	\item Contrase\~na del usuario root.
+\end{itemize}
+
+\section{Command Line client}
+\label{sec:cl-client}
+
+\par Ahora ya podemos acceder al cliente MySQL a través del cliente de comandos.
+
+\par Command:
+\begin{lstlisting}[style=Shell]
+mysql [<options>] database
+\end{lstlisting}
+
+\par Common options:
+\begin{lstlisting}[style=Shell]
+--user, -u: MySQL user name
+--password, -p: user's password
+--host, -h: connect to the server on the given host
+\end{lstlisting}
+
+\par Entrar en el cliente de la base de datos:
+\begin{lstlisting}[style=Shell]
+ricardo@ricardo-ubuntu:~$ mysql -u root -padmin
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 193
+Server version: 5.5.28-0ubuntu0.12.04.3 (Ubuntu)
+
+Copyright (c) 2000, 2012, Oracle and/or its affiliates. 
+All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation 
+and/or its affiliates. Other names may be trademarks 
+of their respective owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear
+ the current input statement.
+mysql>
+\end{lstlisting}
+
+\par Podemos empezar a familiarizarnos con los comandos básicos:
+
+\begin{enumerate}
+    \item Crear una base de datos::
+\begin{lstlisting}[style=Shell]
+mysql> create database [nombre\_de\_bbdd];
+\end{lstlisting}
+
+    \item Acceder a ella::
+\begin{lstlisting}[style=Shell]
+mysql> use [nombre\_de\_bbdd];
+\end{lstlisting}
+    
+    \item Eliminar la tabla::
+\begin{lstlisting}[style=Shell]
+mysql> drop [nombre\_de\_bbdd];
+\end{lstlisting}
+    
+    \item Mostrar tablas::
+\begin{lstlisting}[style=Shell]
+mysql> show tables;
+\end{lstlisting}
+
+    \item Descripción de una tabla::
+\begin{lstlisting}[style=Shell]
+mysql> desc [nombre\_de\_tabla];
+\end{lstlisting}
+
+\end{enumerate}
+
+\section{Backups}
+\label{sec:backups}
+
+\par Se pueden aplicar diferentes tipo de filtros a la hora de crear un backup de la base de datos:
+
+\begin{itemize}
+	\item BBDD completa.
+	\item Determinadas Tablas.
+	\item etc\ldots
+\end{itemize}
+
+\section{GUI Tools}
+\label{sec:gui-tools}
+
+\par MySQL compr\'o \emph{DBDesigner4}\footnote{http://fabforce.net/dbdesigner4/} para desarrollar \textbf{MySQLWorkbench}\footnote{http://www.mysql.com/products/workbench/}.
+
+Tambi\'en podemos optar por la elecci\'on de \emph{PhpMyAdmin}\footnote{http://www.phpmyadmin.net/home\_page/index.php} a trav\'es de un interfaz web.
+
+\section{Peculiaridades}
+\label{sec:peculiaridades}
+
+\par En MySQL, los tipos de Datos Gis\footnote{http://dev.mysql.com/doc/refman/5.0/es/spatial-extensions.html} no estaban soportados con anterioridad. Este tipo de datos ofrece valores que representan a un elemento geogr\'afico, donde por elemento geogr\'afico entendemos; \emph{cualquier cosa en el mundo que tenga una ubicaci\'on}.
+
+\begin{thebibliography}{9}
+
+    \bibitem{guide-mysql}
+    The Definitive Guide to MySQL 5, Apress,\\
+    Kofler, Michael,\\
+    2005.
+
+    \bibitem{pro-mysql}
+    Pro MySQL, Apressddison-Wesley,\\
+    Kruckenber and Pipes.,\\ 
+    2005.
+
+\end{thebibliography}
+
+\end{document}
